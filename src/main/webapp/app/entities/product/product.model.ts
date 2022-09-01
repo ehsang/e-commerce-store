@@ -9,6 +9,7 @@ export interface IProduct {
   sized?: Size;
   imageContentType?: string | null;
   image?: string | null;
+  ehsanComment?: string;
   productCategory?: IProductCategory | null;
 }
 
@@ -21,6 +22,7 @@ export class Product implements IProduct {
     public sized?: Size,
     public imageContentType?: string | null,
     public image?: string | null,
+    public ehsanComment?: string,
     public productCategory?: IProductCategory | null
   ) {}
 }

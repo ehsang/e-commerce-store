@@ -77,6 +77,9 @@ public class ProductService {
                 if (product.getImageContentType() != null) {
                     existingProduct.setImageContentType(product.getImageContentType());
                 }
+                if (product.getEhsanComment() != null) {
+                    existingProduct.setEhsanComment(product.getEhsanComment());
+                }
 
                 return existingProduct;
             })

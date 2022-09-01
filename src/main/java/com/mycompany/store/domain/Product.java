@@ -50,6 +50,10 @@ public class Product implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
+    @NotNull
+    @Column(name = "ehsan_comment", nullable = false)
+    private String ehsanComment;
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "products" }, allowSetters = true)
     private ProductCategory productCategory;
@@ -147,6 +151,19 @@ public class Product implements Serializable {
         this.imageContentType = imageContentType;
     }
 
+    public String getEhsanComment() {
+        return this.ehsanComment;
+    }
+
+    public Product ehsanComment(String ehsanComment) {
+        this.setEhsanComment(ehsanComment);
+        return this;
+    }
+
+    public void setEhsanComment(String ehsanComment) {
+        this.ehsanComment = ehsanComment;
+    }
+
     public ProductCategory getProductCategory() {
         return this.productCategory;
     }
@@ -190,6 +207,7 @@ public class Product implements Serializable {
             ", sized='" + getSized() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
+            ", ehsanComment='" + getEhsanComment() + "'" +
             "}";
     }
 }

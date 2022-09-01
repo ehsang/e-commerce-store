@@ -52,6 +52,7 @@ describe('Product e2e test', () => {
       productUpdatePage.setPriceInput('5'),
       productUpdatePage.sizedSelectLastOption(),
       productUpdatePage.setImageInput(absolutePath),
+      productUpdatePage.setEhsanCommentInput('ehsanComment'),
       productUpdatePage.productCategorySelectLastOption(),
     ]);
 

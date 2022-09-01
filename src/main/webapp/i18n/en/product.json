@@ -23,6 +23,7 @@
       "price": "Price",
       "sized": "Sized",
       "image": "Image",
+      "ehsanComment": "Ehsan Comment",
       "productCategory": "Product Category"
     }
   }

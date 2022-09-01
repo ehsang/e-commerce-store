@@ -5,6 +5,7 @@ description String
 price BigDecimal required min(0)
 sized Size required
 image ImageBlob
+ehsanComment String required
 }
 enum Size {
 S, M, L, XL, XXL

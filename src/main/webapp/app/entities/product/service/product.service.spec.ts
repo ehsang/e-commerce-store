@@ -28,6 +28,7 @@ describe('Product Service', () => {
       sized: Size.S,
       imageContentType: 'image/png',
       image: 'AAAAAAA',
+      ehsanComment: 'AAAAAAA',
     };
   });
 
@@ -68,6 +69,7 @@ describe('Product Service', () => {
           price: 1,
           sized: 'BBBBBB',
           image: 'BBBBBB',
+          ehsanComment: 'BBBBBB',
         },
         elemDefault
       );
@@ -87,6 +89,7 @@ describe('Product Service', () => {
           name: 'BBBBBB',
           price: 1,
           image: 'BBBBBB',
+          ehsanComment: 'BBBBBB',
         },
         new Product()
       );
@@ -111,6 +114,7 @@ describe('Product Service', () => {
           price: 1,
           sized: 'BBBBBB',
           image: 'BBBBBB',
+          ehsanComment: 'BBBBBB',
         },
         elemDefault
       );
@@ -162,7 +166,7 @@ describe('Product Service', () => {
       });
 
       it('should add only unique Product to an array', () => {
-        const productArray: IProduct[] = [{ id: 123 }, { id: 456 }, { id: 90524 }];
+        const productArray: IProduct[] = [{ id: 123 }, { id: 456 }, { id: 51217 }];
         const productCollection: IProduct[] = [{ id: 123 }];
         expectedResult = service.addProductToCollectionIfMissing(productCollection, ...productArray);
         expect(expectedResult).toHaveLength(3);

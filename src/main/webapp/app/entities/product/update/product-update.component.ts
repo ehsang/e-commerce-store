@@ -32,6 +32,7 @@ export class ProductUpdateComponent implements OnInit {
     sized: [null, [Validators.required]],
     image: [],
     imageContentType: [],
+    ehsanComment: [null, [Validators.required]],
     productCategory: [],
   });
 
@@ -124,6 +125,7 @@ export class ProductUpdateComponent implements OnInit {
       sized: product.sized,
       image: product.image,
       imageContentType: product.imageContentType,
+      ehsanComment: product.ehsanComment,
       productCategory: product.productCategory,
     });
 
@@ -158,6 +160,7 @@ export class ProductUpdateComponent implements OnInit {
       sized: this.editForm.get(['sized'])!.value,
       imageContentType: this.editForm.get(['imageContentType'])!.value,
       image: this.editForm.get(['image'])!.value,
+      ehsanComment: this.editForm.get(['ehsanComment'])!.value,
       productCategory: this.editForm.get(['productCategory'])!.value,
     };
   }

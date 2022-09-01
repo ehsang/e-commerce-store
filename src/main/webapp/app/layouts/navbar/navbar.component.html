@@ -55,7 +55,7 @@
                 <span jhiTranslate="global.menu.entities.product">Product</span>
               </a>
             </li>
-            <li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
               <a
                 class="dropdown-item"
                 routerLink="product-category"
@@ -67,7 +67,7 @@
                 <span jhiTranslate="global.menu.entities.productCategory">Product Category</span>
               </a>
             </li>
-            <li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'">
               <a
                 class="dropdown-item"
                 routerLink="customer"

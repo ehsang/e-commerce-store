@@ -75,29 +75,36 @@ Category</span>&nbsp;
                 <h5 class="mb-1">{{ product.name }}</h5>
               </a>
               <small *ngIf="product.productCategory">
-                <a [routerLink]="['/product-category', product.productCategory?.name, 'view']">
+                <a [routerLink]="['/product-category', product.productCategory?.id, 'view']">
                   Category: {{ product.productCategory?.name }}
                 </a>
               </small>
+              <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <button type="submit" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary btn-sm">
+                  <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                  <span class="d-none d-md-inline"
+                        jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+                <button type="submit" (click)="delete(product)" class="btn btn-danger btn-sm">
+                  <fa-icon [icon]="'times'"></fa-icon>
+                  <span class="d-none d-md-inline"
+                        jhiTranslate="entity.action.delete">Delete</span>
+                </button>
+              </div>
             </div>
             <small class="mb-1">{{ product.description }}</small>
             <p class="mb-1">{{product.price | currency: 'USD'}}</p>
+            <div class="d-flex w-100 justify-content-between">
+
+              <small *ngIf="product.ehsanComment">
+                  Ehsan's comment: {{ product.ehsanComment }}
+              </small>
+            </div>
             <small>
               Size:
               <span jhiTranslate="{{ 'storeApp.Size.' + product.sized}}">{{ product.sized }}</span>
             </small>
-            <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
-              <button type="submit" [routerLink]="['/product', product.id, 'edit']" class="btn btn-primary btn-sm">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                <span class="d-none d-md-inline"
-                      jhiTranslate="entity.action.edit">Edit</span>
-              </button>
-              <button type="submit" (click)="delete(product)" class="btn btn-danger btn-sm">
-                <fa-icon [icon]="'times'"></fa-icon>
-                <span class="d-none d-md-inline"
-                      jhiTranslate="entity.action.delete">Delete</span>
-              </button>
-            </div>
+
           </div>
         </div>
       </a>

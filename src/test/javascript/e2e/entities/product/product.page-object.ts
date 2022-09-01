@@ -35,6 +35,7 @@ export class ProductUpdatePage {
   priceInput = element(by.id('field_price'));
   sizedSelect = element(by.id('field_sized'));
   imageInput = element(by.id('file_image'));
+  ehsanCommentInput = element(by.id('field_ehsanComment'));
 
   productCategorySelect = element(by.id('field_productCategory'));
 
@@ -92,6 +93,14 @@ export class ProductUpdatePage {
 
   async getImageInput(): Promise<string> {
     return await this.imageInput.getAttribute('value');
+  }
+
+  async setEhsanCommentInput(ehsanComment: string): Promise<void> {
+    await this.ehsanCommentInput.sendKeys(ehsanComment);
+  }
+
+  async getEhsanCommentInput(): Promise<string> {
+    return await this.ehsanCommentInput.getAttribute('value');
   }
 
   async productCategorySelectLastOption(): Promise<void> {

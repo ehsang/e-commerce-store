@@ -108,6 +108,29 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="storeApp.product.ehsanComment" for="field_ehsanComment">Ehsan Comment</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ehsanComment"
+            id="field_ehsanComment"
+            data-cy="ehsanComment"
+            formControlName="ehsanComment"
+          />
+          <div
+            *ngIf="editForm.get('ehsanComment')!.invalid && (editForm.get('ehsanComment')!.dirty || editForm.get('ehsanComment')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('ehsanComment')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="storeApp.product.productCategory" for="field_productCategory">Product Category</label>
           <select
             class="form-control"
