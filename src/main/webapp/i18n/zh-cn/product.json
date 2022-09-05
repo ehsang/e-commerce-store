@@ -24,6 +24,7 @@
       "sized": "Sized",
       "image": "Image",
       "ehsanComment": "Ehsan Comment",
+      "isActive": "Is Active",
       "productCategory": "Product Category"
     }
   }

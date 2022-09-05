@@ -25,6 +25,9 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.PaginationUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
+import static com.mycompany.store.domain.OrderItem_.product;
+import static com.mycompany.store.domain.Product_.isActive;
+
 /**
  * REST controller for managing {@link com.mycompany.store.domain.Product}.
  */
@@ -172,6 +175,13 @@ public class ProductResource {
         log.debug("REST request to get Product : {}", id);
         Optional<Product> product = productService.findOne(id);
         return ResponseUtil.wrapOrNotFound(product);
+    }
+
+    @GetMapping("/getAllActiveProductsList/{isActive}")
+    public List<Product> getProduct(@PathVariable Boolean isActive) {
+        log.debug("REST request to get Product : {}", isActive);
+        List<Product> product = productRepository.getAllActiveProductsList(isActive);
+        return product;
     }
 
     /**

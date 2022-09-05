@@ -22,6 +22,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         return this.findAllWithToOneRelationships();
     }
 
+    default List<Product> findAllWithEagerRelationships(Boolean isActive) {
+        return this.getAllActiveProductsList(isActive);
+    }
+
     default Page<Product> findAllWithEagerRelationships(Pageable pageable) {
         return this.findAllWithToOneRelationships(pageable);
     }
@@ -37,4 +41,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select product from Product product left join fetch product.productCategory where product.id =:id")
     Optional<Product> findOneWithToOneRelationships(@Param("id") Long id);
+
+    @Query("select product from Product product where product.isActive =:isActive")
+    List<Product> getAllActiveProductsList(@Param("isActive") Boolean isActive);
 }

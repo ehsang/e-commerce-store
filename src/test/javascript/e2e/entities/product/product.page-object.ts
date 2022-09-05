@@ -36,6 +36,7 @@ export class ProductUpdatePage {
   sizedSelect = element(by.id('field_sized'));
   imageInput = element(by.id('file_image'));
   ehsanCommentInput = element(by.id('field_ehsanComment'));
+  isActiveInput = element(by.id('field_isActive'));
 
   productCategorySelect = element(by.id('field_productCategory'));
 
@@ -101,6 +102,10 @@ export class ProductUpdatePage {
 
   async getEhsanCommentInput(): Promise<string> {
     return await this.ehsanCommentInput.getAttribute('value');
+  }
+
+  getIsActiveInput(): ElementFinder {
+    return this.isActiveInput;
   }
 
   async productCategorySelectLastOption(): Promise<void> {

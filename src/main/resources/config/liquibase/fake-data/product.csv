@@ -1,11 +1,11 @@
-id;name;description;price;sized;image;image_content_type;ehsan_comment
-1;Steel;Assistant;57374;XXL;../fake-data/blob/hipster.png;image/png;support navigate
-2;Chilean reboot Dynamic;Track actuating deposit;44573;S;../fake-data/blob/hipster.png;image/png;Metal
-3;models partnerships Infrastructure;transmitting New Bedfordshire;60561;XL;../fake-data/blob/hipster.png;image/png;Gloves Drive
-4;Small digital Oklahoma;orange Practical;80588;XXL;../fake-data/blob/hipster.png;image/png;Vermont auxiliary
-5;COM Implementation Awesome;homogeneous Crossroad;86573;S;../fake-data/blob/hipster.png;image/png;Bike Shoes Center
-6;tangible;Cheese Renminbi;33734;XXL;../fake-data/blob/hipster.png;image/png;South Forward open-source
-7;Fantastic;Buckinghamshire;8835;L;../fake-data/blob/hipster.png;image/png;User-friendly Data navigate
-8;Harbors Automotive;Checking system-worthy;9545;S;../fake-data/blob/hipster.png;image/png;Ergonomic relationships back-end
-9;solution Zimbabwe Games;Account transmit Incredible;88593;XXL;../fake-data/blob/hipster.png;image/png;Martinique Executive Down-sized
-10;transitional;bypassing Chief interactive;69233;XXL;../fake-data/blob/hipster.png;image/png;multi-byte Frozen
+id;name;description;price;sized;image;image_content_type;ehsan_comment;is_active
+1;Steel;Assistant;57374;XXL;../fake-data/blob/hipster.png;image/png;support navigate;true
+2;Computer Legacy deposit;THX Car;44573;S;../fake-data/blob/hipster.png;image/png;Metal;true
+3;Metical Incredible;Union compressing;63810;M;../fake-data/blob/hipster.png;image/png;green Malagasy;false
+4;Drive Australian;Business-focused;16911;S;../fake-data/blob/hipster.png;image/png;CFP orange;false
+5;Data distributed;auxiliary;90726;XXL;../fake-data/blob/hipster.png;image/png;Personal Steel;false
+6;intangible Prairie;invoice;96920;S;../fake-data/blob/hipster.png;image/png;Keyboard;true
+7;Ball pixel;Account;68319;S;../fake-data/blob/hipster.png;image/png;rich South Forward;true
+8;hacking;Arizona mobile;44109;XXL;../fake-data/blob/hipster.png;image/png;Implementation;true
+9;navigate brand up;systems Gorgeous;6953;XXL;../fake-data/blob/hipster.png;image/png;Handcrafted;false
+10;Cambridgeshire Chair;Ukraine;99958;S;../fake-data/blob/hipster.png;image/png;Chicken;true

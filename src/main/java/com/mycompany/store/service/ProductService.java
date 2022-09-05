@@ -80,6 +80,9 @@ public class ProductService {
                 if (product.getEhsanComment() != null) {
                     existingProduct.setEhsanComment(product.getEhsanComment());
                 }
+                if (product.getIsActive() != null) {
+                    existingProduct.setIsActive(product.getIsActive());
+                }
 
                 return existingProduct;
             })
