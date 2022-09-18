@@ -54,6 +54,10 @@ public class Product implements Serializable {
     @Column(name = "ehsan_comment", nullable = false)
     private String ehsanComment;
 
+    @NotNull
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive;
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "products" }, allowSetters = true)
     private ProductCategory productCategory;
@@ -164,6 +168,19 @@ public class Product implements Serializable {
         this.ehsanComment = ehsanComment;
     }
 
+    public Boolean getIsActive() {
+        return this.isActive;
+    }
+
+    public Product isActive(Boolean isActive) {
+        this.setIsActive(isActive);
+        return this;
+    }
+
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
     public ProductCategory getProductCategory() {
         return this.productCategory;
     }
@@ -208,6 +225,7 @@ public class Product implements Serializable {
             ", image='" + getImage() + "'" +
             ", imageContentType='" + getImageContentType() + "'" +
             ", ehsanComment='" + getEhsanComment() + "'" +
+            ", isActive='" + getIsActive() + "'" +
             "}";
     }
 }

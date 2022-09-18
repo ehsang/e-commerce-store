@@ -35,6 +35,11 @@
       "fieldName": "ehsanComment",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "isActive",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
     }
   ],
   "fluentMethods": true,

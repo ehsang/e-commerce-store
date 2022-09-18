@@ -10,6 +10,7 @@ export interface IProduct {
   imageContentType?: string | null;
   image?: string | null;
   ehsanComment?: string;
+  isActive?: boolean;
   productCategory?: IProductCategory | null;
 }
 
@@ -23,8 +24,11 @@ export class Product implements IProduct {
     public imageContentType?: string | null,
     public image?: string | null,
     public ehsanComment?: string,
+    public isActive?: boolean,
     public productCategory?: IProductCategory | null
-  ) {}
+  ) {
+    this.isActive = this.isActive ?? false;
+  }
 }
 
 export function getProductIdentifier(product: IProduct): number | undefined {

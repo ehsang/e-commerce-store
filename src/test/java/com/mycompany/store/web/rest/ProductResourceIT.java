@@ -62,6 +62,9 @@ class ProductResourceIT {
     private static final String DEFAULT_EHSAN_COMMENT = "AAAAAAAAAA";
     private static final String UPDATED_EHSAN_COMMENT = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_IS_ACTIVE = false;
+    private static final Boolean UPDATED_IS_ACTIVE = true;
+
     private static final String ENTITY_API_URL = "/api/products";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -99,7 +102,8 @@ class ProductResourceIT {
             .sized(DEFAULT_SIZED)
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
-            .ehsanComment(DEFAULT_EHSAN_COMMENT);
+            .ehsanComment(DEFAULT_EHSAN_COMMENT)
+            .isActive(DEFAULT_IS_ACTIVE);
         return product;
     }
 
@@ -117,7 +121,8 @@ class ProductResourceIT {
             .sized(UPDATED_SIZED)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .ehsanComment(UPDATED_EHSAN_COMMENT);
+            .ehsanComment(UPDATED_EHSAN_COMMENT)
+            .isActive(UPDATED_IS_ACTIVE);
         return product;
     }
 
@@ -146,6 +151,7 @@ class ProductResourceIT {
         assertThat(testProduct.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
         assertThat(testProduct.getEhsanComment()).isEqualTo(DEFAULT_EHSAN_COMMENT);
+        assertThat(testProduct.getIsActive()).isEqualTo(DEFAULT_IS_ACTIVE);
     }
 
     @Test
@@ -236,6 +242,23 @@ class ProductResourceIT {
 
     @Test
     @Transactional
+    void checkIsActiveIsRequired() throws Exception {
+        int databaseSizeBeforeTest = productRepository.findAll().size();
+        // set the field null
+        product.setIsActive(null);
+
+        // Create the Product, which fails.
+
+        restProductMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(TestUtil.convertObjectToJsonBytes(product)))
+            .andExpect(status().isBadRequest());
+
+        List<Product> productList = productRepository.findAll();
+        assertThat(productList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     void getAllProducts() throws Exception {
         // Initialize the database
         productRepository.saveAndFlush(product);
@@ -252,7 +275,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.[*].sized").value(hasItem(DEFAULT_SIZED.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
-            .andExpect(jsonPath("$.[*].ehsanComment").value(hasItem(DEFAULT_EHSAN_COMMENT)));
+            .andExpect(jsonPath("$.[*].ehsanComment").value(hasItem(DEFAULT_EHSAN_COMMENT)))
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())));
     }
 
     @SuppressWarnings({ "unchecked" })
@@ -291,7 +315,8 @@ class ProductResourceIT {
             .andExpect(jsonPath("$.sized").value(DEFAULT_SIZED.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
-            .andExpect(jsonPath("$.ehsanComment").value(DEFAULT_EHSAN_COMMENT));
+            .andExpect(jsonPath("$.ehsanComment").value(DEFAULT_EHSAN_COMMENT))
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()));
     }
 
     @Test
@@ -320,7 +345,8 @@ class ProductResourceIT {
             .sized(UPDATED_SIZED)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .ehsanComment(UPDATED_EHSAN_COMMENT);
+            .ehsanComment(UPDATED_EHSAN_COMMENT)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restProductMockMvc
             .perform(
@@ -341,6 +367,7 @@ class ProductResourceIT {
         assertThat(testProduct.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testProduct.getEhsanComment()).isEqualTo(UPDATED_EHSAN_COMMENT);
+        assertThat(testProduct.getIsActive()).isEqualTo(UPDATED_IS_ACTIVE);
     }
 
     @Test
@@ -432,6 +459,7 @@ class ProductResourceIT {
         assertThat(testProduct.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testProduct.getEhsanComment()).isEqualTo(UPDATED_EHSAN_COMMENT);
+        assertThat(testProduct.getIsActive()).isEqualTo(DEFAULT_IS_ACTIVE);
     }
 
     @Test
@@ -453,7 +481,8 @@ class ProductResourceIT {
             .sized(UPDATED_SIZED)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
-            .ehsanComment(UPDATED_EHSAN_COMMENT);
+            .ehsanComment(UPDATED_EHSAN_COMMENT)
+            .isActive(UPDATED_IS_ACTIVE);
 
         restProductMockMvc
             .perform(
@@ -474,6 +503,7 @@ class ProductResourceIT {
         assertThat(testProduct.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testProduct.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
         assertThat(testProduct.getEhsanComment()).isEqualTo(UPDATED_EHSAN_COMMENT);
+        assertThat(testProduct.getIsActive()).isEqualTo(UPDATED_IS_ACTIVE);
     }
 
     @Test
