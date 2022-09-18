@@ -141,6 +141,9 @@ public class ProductResource {
         );
     }
 
+
+
+
     /**
      * {@code GET  /products} : get all the products.
      *
@@ -183,6 +186,43 @@ public class ProductResource {
         List<Product> product = productRepository.getAllActiveProductsList(isActive);
         return product;
     }
+
+
+ /*   @PatchMapping(value = "/products/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Product> disablingTheProduct(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Product product
+    ) throws URISyntaxException {
+        log.debug("REST request to partial update Product partially : {}, {}", id, product);
+        if (product.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, product.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!productRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Product> result = productService.disableProduct(product);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, product.getId().toString())
+        );
+    }*/
+
+
+    /*@PutMapping("/disableAProduct/{id}")
+    public ResponseEntity<Void> disableProduct(@PathVariable Long id) {
+        log.debug("REST request to disable a Product : {}", product);
+        productService.disableProduct(product);
+        return ResponseEntity
+            .noContent()
+            .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
+            .build();
+    }*/
 
     /**
      * {@code DELETE  /products/:id} : delete the "id" product.

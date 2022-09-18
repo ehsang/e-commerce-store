@@ -1,8 +1,10 @@
 package com.mycompany.store.repository;
 
 import com.mycompany.store.domain.Product;
+
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -18,6 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
         return this.findOneWithToOneRelationships(id);
     }
 
+
     default List<Product> findAllWithEagerRelationships() {
         return this.findAllWithToOneRelationships();
     }
@@ -25,6 +28,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     default List<Product> findAllWithEagerRelationships(Boolean isActive) {
         return this.getAllActiveProductsList(isActive);
     }
+
+    /*default Optional<Product> findOneWithEagerRelationships(Long id) {
+
+        return this.disableTheProduct(id);
+    }*/
 
     default Page<Product> findAllWithEagerRelationships(Pageable pageable) {
         return this.findAllWithToOneRelationships(pageable);
@@ -41,6 +49,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select product from Product product left join fetch product.productCategory where product.id =:id")
     Optional<Product> findOneWithToOneRelationships(@Param("id") Long id);
+
+/*
+    @Query("select product from Product product left join fetch product.productCategory where product.id =:id")
+    Optional<Product> disableTheProduct(@Param("id") Long id);
+*/
 
     @Query("select product from Product product where product.isActive =:isActive")
     List<Product> getAllActiveProductsList(@Param("isActive") Boolean isActive);
